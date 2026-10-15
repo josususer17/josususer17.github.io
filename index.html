@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="whidth=device-width, initial-scale=1.0">
+
+        <title>M.U.R.D.E.R. Cat</title>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: arial, sans-serif;
+
+                background-color: rgb(0, 0, 0);
+                background-image: url("imagenes/pantalla.png");
+                background-size: 100% 100%;
+                background-position: center;
+                background-attachment: fixed;
+
+                color: #111;
+            }
+
+            /* --------------ENCABEZADO---------*/
+
+            header {
+                background-color: #000 !important; 
+                color: white;
+                padding: 15px 6%;
+
+                /*     LOGO Y MENU EN UNA SOLA FILA */
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                /*      MANTIENE EL ENCABEZADO ARRIBA       */
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+            /*---------------------LOGO---------*/
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 25px;
+            }
+                /*        TAMAÑO DEL LOGO          */
+            .logo img {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+            }
+                /*      NOMBRE M.U.R.D.E.R. CAT       */
+            .logo h1 {
+                margin: 0;
+                font-size: 20px;
+                color: rgb(250, 249, 249);
+            }
+            /*---------MENU---------------*/
+            nav {
+                display: flex;
+                gap: 25px;
+            }
+                /*      BOTONES DEL MENU          */
+            nav a {
+                color: rgb(240, 235, 235);
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 15px;
+                margin: 0 5px;
+            }
+                /*        EFECTO DE COLOR ROJO PARA EL BOTON       */
+            nav a:hover {
+                color: rgb(248, 12, 12);
+            }
+            /* CODIGO PARA QUE SE ADAPTE AL CELULAR      */
+            @media (max-width: 700px) {
+
+                header {
+                    /* codigo de una sola fila */
+                    flex-direction: row;
+                    gap: 8px;
+                    padding: 10px 3%;
+                }
+
+                .logo img {
+                    width: 42px;
+                    height: 420px;
+                }
+
+                .logo h1 {
+                    font-size: 14px;
+                }
+
+                nav {
+                    gap: 8px;
+                    flex-wrap: nowrap;
+                }
+
+                nav a {
+                    font: 10px;
+                }
+                /*    ADAPTACIO DEL FONDO     */
+                body {
+                    background-size: auto 100%;
+                    background-position: center;
+                }
+            }
+
+            /*   presentacion */
+            .presentacion {
+                min-height: 400px;
+                padding: 50px 8%;
+                /*margin-top: 50px !important;*/
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                box-sizing: border-box;
+            }
+
+            /*   recuadro negro */
+            .presentacion-contenido {
+                background-color: #000;
+                color: white;
+                border: 5px solid #e00000;
+                border-radius: 50px;
+                padding: 30px;
+
+                transform: translateY(10px);
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 25px;
+
+                width: 100%;
+                max-width: 10000px;    /*    anchura del cuadro   */
+                box-sizing: border-box;
+            }
+
+             /*   texto    */
+            .presentacion-texto {
+                flex: 1;
+            }
+
+            .presentacion-texto h2 {
+                color: #ff2222;
+                font-size: 32px;
+                margin-top: 0;
+            }
+
+            .presentacion-texto p {
+                font-size: 16px;
+                line-height: 1,6;
+            }
+
+            /*mascota  */
+            .presentacion-mascota {
+                width: 50%;
+                height: 320px;
+                object-fit: contain;
+                transform: scale(1.18);
+            }
+
+                /* boton de explorar catalogo  */
+            .boton-explorar {
+                display: inline-block;
+                background: #e00000;
+                color: white;
+                text-decoration: none;
+                padding: 13px 22px;
+                border-radius: 6px;
+                font-weight: bold;
+                margin-top: 35px;
+            }
+
+            .boton-explorar:hover {
+                background: #ff3333;
+            }
+
+                  /* vesion para el celular      */
+            @media (max-width: 700px) {
+                .presentacion {padding: 25px 4%;
+                }
+
+                .presentacion-contenido {
+                    flex-direction: column-reverse;
+                    text-align: center;
+                    padding: 20px;
+                }
+
+                .presentacion-mascota {
+                    width: 180px;
+                    height: 200px;
+                }
+             
+                .presentacion-texto h2 {
+                    font-size: 25px;
+                }
+            }
+            
+            /*       tarjetas del contenido, estilo general    */
+            .catalogo {
+                padding: 50px 6%;
+                text-align: center;
+            }
+
+            .catalogo h2 {
+                color: #ff2222;
+                font-size: 32px;
+                margin-bottom: 30px;
+            }
+
+            /*organizacion de las tarjetas*/
+            .catalogo-tarjetas {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 40px;
+                width: 100%;
+                align-items: stretch;
+                margin: 70px 0;
+            }
+
+            /* configuracion de cada tarjeta */
+            .tarjeta {
+                background: #000;
+                color: white;
+                border: 2px solid #e00000;
+                border-radius: 40px;
+                padding: 30px;
+                box-sizing: border-box;
+
+                flex: 1;
+                min-width: 0;
+                margin: 0 12px;
+            }
+            
+            /* estilo de las imagenes en las tarjetas */
+            .tarjeta img {
+                width: 100%;
+                height: 300px;
+                object-fit: contain;
+            }
+
+            /* titulos de no se de cual   */
+            .tarjeta h3 {
+                color: #ff2222;
+                font-size: 23px;
+            }
+
+            /* estilo de la descripcon de la tajeta  */
+            .tarjeta p {
+                font-size: 15px;
+                line-height: 1,5;
+            }
+
+            /*   botones de cada tarjeta    */
+            .boton-tarjeta {
+                display: inline-block;
+                background: #e00000;
+                color: white;
+                text-decoration: none;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-weight: bold;
+                margin-top: 10px;
+            }
+
+            /* animaco del boton   */
+            .boton-tarjeta:hover {
+                background: #ff3333;
+            }
+
+            /* adaptacion para la tarjeta   */
+            @media (max-width: 700px) {
+                .catalogo-tarjetas {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /*        PIE DE PAGINA       */
+            footer {
+                background: #000;
+                color:white;
+                padding: 30px 6%;
+                border-top: 3px solid #e00000;
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            /*valores del emprendimiento  */
+            .valores {
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                flex-wrap: wrap;
+                margin-bottom: 25px;
+            }
+
+            .valor h3 {
+                color: #ff2222;
+                margin-bottom: 8px;
+                margin: 0 90px;
+            }
+
+            /* redes sociales (aumque no temga cuanta en redes)  */
+            .redes {
+                margin-top: 20px;
+            }
+
+            .redes a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                margin: 0 25px;
+            }
+
+            .redes a:hover {
+                color: #ff2222;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!--------------ENCABEZADO--------->
+        <header>
+
+            <!-------         LOGO Y NOMBRE         ----->
+            <div class="logo">
+
+                <!---------codigo de la imagen del logo-->
+                <img src="imagenes/logo.png" alt="logo M.U.R.D.E.R. Cat">
+
+                <h1>M.U.R.D.E.R. Cat</h1>
+            </div>
+
+            <!--------MENU-->
+            <nav>
+                <a href="index.html">INICIO</a>
+                <a href="disfraces.html">DISFRACES</a>
+                <a href="mascaras.html">MASCARAS</a>
+                <a href="accesorios.html">ACCESORIOS</a>
+            </nav>
+        </header>
+
+        <!---------------PRESENTACION DEL CATALOGO------------>
+        <section clss="presentacion">
+            <div class="presentacion-contenido">
+
+                    <!--texto de la empresa-->
+                <div class="presentacion-texto">
+                    <h2>M.U.R.D.E.R. Cat</h2>
+
+                    <p>
+                        Mascaras Unidas Recicladas en Diversidad Electronica Rudimentaria Cat
+                    </p>
+
+                    <p>
+                        Creamos disfraces, mascaras y accesorios originales utilizando materiales reciclados y elementos electronicos basicos.
+                    </p>
+
+                        <!-- boton que llevara al catalogo, boton de explorar catalogo-->
+                    <a href="#catalogo" class="boton-explorar">
+                        EXPLORAR CATALOGO
+                    </a>
+
+                </div>
+
+                    <!--     i,agen de la mascota  -->
+                <img
+                    src="imagenes/mascota.png"
+                    alt="Mascota de MURDER Cat"
+                    class="presentacion-mascota"
+                >
+            </div>
+        </section>
+
+        <!-- -------------TARJETAS------------>
+        <selction class="catalogo" id="catalogo">
+            <h2>EXPLORA NUESTRO CATALOGO</h2>
+
+            <div class="catalogo-tarjetas">
+
+                <!-- tarjeta de difraces -->
+                <div class="tarjeta">
+                    <img src="imagenes/tarjeta-disfraces.png" alt="Disfraces">
+
+                    <h3>DISFRACES</h3>
+
+                    <P>Descibre disfraces originales elaborados con materiales reciclados y creativos.</P>
+
+                    <a href="disfraces.html" class="boton-tarjeta">
+                        VER DISFRACES
+                    </a>
+                </div>
+
+                <!-- tarjeta de MASCARAS -->
+                <div class="tarjeta">
+                    <img src="imagenes/tarjeta-mascaras.png" alt="Mascaras">
+
+                    <h3>MASCARAS</h3>
+
+                    <P>Explora mascaras creativas con diseños unicos y detalles electronicos.</P>
+
+                    <a href="mascaras.html" class="boton-tarjeta">
+                        VER MASCARAS
+                    </a>
+                </div>
+
+                <!-- tarjeta de ACCESORIOS -->
+                <div class="tarjeta">
+                    <img src="imagenes/tarjeta-accesorios.png" alt="Accesorios">
+
+                    <h3>ACCESORIOS</h3>
+
+                    <P>Encuentra accesorios para cpmplementartus disfraces y personajes.</P>
+
+                    <a href="accesorios.html" class="boton-tarjeta">
+                        VER ACCESORIOS
+                    </a>
+                </div>
+            </div>
+
+        </selction>
+
+        <!--PIE DE PAGINA-->
+        <footer>
+
+            <div class="valores">
+
+                <div class="valor">
+                    <h3>CREATIVIDAD</h3>
+                    <P>Diseños originales y unicos.</P>
+                </div>
+
+                <div class="valor">
+                    <h3>RECICLAJE</h3>
+                    <P>Una nueva vida para los materiales.</P>
+                </div>
+
+                <div class="valor">
+                    <h3>ELECTRONICA</h3>
+                    <P>Tecnolgia en nuestros diseños.</P>
+                </div>
+            </div>
+
+            <hr>
+
+            <!--<div class="redes">
+                <h3>SIGUENOS</h3>
+                <a href="https://www:tiktok.com" target="_blank">TikTok</a>
+                <a href="https://www:instagram.com" target="_blank">Instagram</a>
+                <a href="https://www:youtube.com" target="_blank">YouTube</a>
+            </div>-->
+        </footer>
+
+    </body>
+</html>
