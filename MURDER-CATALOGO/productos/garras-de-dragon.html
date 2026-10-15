@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="whidth=device-width, initial-scale=1.0">
+
+        <title>M.U.R.D.E.R. Cat</title>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: arial, sans-serif;
+
+                background-color: rgb(0, 0, 0);
+
+                background-image: url("..//imagenes/pantalla2.png") !important;
+                background-size: 100% 100%;
+                background-position: center;
+                background-attachment: fixed;
+
+                color: #fffdfd;
+            }
+
+            /* --------------ENCABEZADO---------*/
+
+            header {
+                background-color: #000 !important; 
+                color: white;
+                padding: 15px 6%;
+
+                /*     LOGO Y MENU EN UNA SOLA FILA */
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                /*      MANTIENE EL ENCABEZADO ARRIBA       */
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+            /*---------------------LOGO---------*/
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 25px;
+            }
+                /*        TAMAÑO DEL LOGO          */
+            .logo img {
+                width: 60px;
+                height: 60px;
+                object-fit: contain;
+            }
+                /*      NOMBRE M.U.R.D.E.R. CAT       */
+            .logo h1 {
+                margin: 0;
+                font-size: 20px;
+                color: rgb(250, 249, 249);
+            }
+            /*---------MENU---------------*/
+            nav {
+                display: flex;
+                gap: 25px;
+            }
+                /*      BOTONES DEL MENU          */
+            nav a {
+                color: rgb(240, 235, 235);
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 15px;
+                margin: 0 5px;
+            }
+                /*        EFECTO DE COLOR ROJO PARA EL BOTON       */
+            nav a:hover {
+                color: rgb(248, 12, 12);
+            }
+            /* CODIGO PARA QUE SE ADAPTE AL CELULAR      */
+            @media (max-width: 700px) {
+
+                header {
+                    /* codigo de una sola fila */
+                    flex-direction: row;
+                    gap: 8px;
+                    padding: 10px 3%;
+                }
+
+                .logo img {
+                    width: 42px;
+                    height: 420px;
+                }
+
+                .logo h1 {
+                    font-size: 14px;
+                }
+
+                nav {
+                    gap: 8px;
+                    flex-wrap: nowrap;
+                }
+
+                nav a {
+                    font: 10px;
+                }
+                /*    ADAPTACIO DEL FONDO     */
+                body {
+                    background-size: auto 100%;
+                    background-position: center;
+                }
+            }
+
+            /*---------------PRODUCTO------------------*/
+            .producto {
+                width: 100%;
+                padding: 70px 8%;
+                box-sizing: border-box;
+            }
+
+            /* contenedor */
+            .producto-contenido {
+                max-width: 1100px;
+                margin: auto;
+
+                display: flex;
+                align-items: center;
+                gap: 50px;
+            }
+
+            /*imagen*/
+            .producto-imagen {
+                flex: 1;
+                text-align: center;
+            }
+
+            .producto-imagen img {
+                width: 100%;
+                max-width: 500px;
+                height: 400px;
+
+                object-fit: contain;
+                transition: 0.3s ease;
+                
+                margin: 20px 3px 20px 20px;
+            }
+
+            .producto-imagen img:hover {
+                transform: scale(1.05);
+            }
+
+            /*informacion*/
+            .producto-info {
+                flex: 1;
+            }
+
+            .producto-info h2 {
+                color: #e00000;
+                font-size: 42px;
+                margin-top: 0;
+            }
+
+            .producto-info h3 {
+                color: #e00000;
+                font-size: 21px;
+                margin-top: 50px;
+            }
+
+            .producto-info p {
+                font-size: 17px;
+                line-height: 1.7;
+            }
+
+            .producto-info ul {
+                line-height: 1.9;
+            }
+
+            /*boton de volver*/
+            .boton-volver {
+                display: inline-block;
+
+                margin-top: 40px;
+                padding: 13px 22px;
+
+                background: #e00000;
+                color: white;
+
+                text-decoration: none;
+                font-weight: bold;
+
+                border-radius: 7px;
+
+                transition: 0.3s ease;
+            }
+
+            .boton-volver:hover {
+                background: #ff3333;
+
+                box-shadow: 
+                    0 0 10px #e00000,
+                    0 0 25px #e00000;
+            }
+
+            /*-----sodigo versionde celular------*/
+            @media (max-width:700px) {
+                .producto {
+                    padding: 40px 5%;
+                }
+
+                .producto-contenido {
+                    flex-direction: column;
+                    gap: 30px;
+                }
+
+                .producto-imagen img {
+                    height: 350px;
+                }
+
+                .producto-info h2 {
+                    font-size: 32px;
+                }
+            }
+            /*        PIE DE PAGINA       */
+            footer {
+                background: #000;
+                color:white;
+                padding: 30px 6%;
+                border-top: 3px solid #e00000;
+                margin-top: 10px;
+                text-align: center;
+            }
+
+            /*valores del emprendimiento  */
+            .valores {
+                display: flex;
+                justify-content: center;
+                gap: 50px;
+                flex-wrap: wrap;
+                margin-bottom: 25px;
+            }
+
+            .valor h3 {
+                color: #ff2222;
+                margin-bottom: 8px;
+                margin: 0 90px;
+            }
+
+            /* redes sociales (aumque no temga cuanta en redes)  */
+            .redes {
+                margin-top: 20px;
+            }
+
+            .redes a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                margin: 0 25px;
+            }
+
+            .redes a:hover {
+                color: #ff2222;
+            }
+        </style>
+    </head>
+    <body>
+        <!--------------ENCABEZADO--------->
+        <header>
+
+            <!-------         LOGO Y NOMBRE         ----->
+            <div class="logo">
+
+                <!---------codigo de la imagen del logo-->
+                <img src="../imagenes/logo.png" alt="logo M.U.R.D.E.R. Cat">
+
+                <h1>M.U.R.D.E.R. Cat</h1>
+            </div>
+
+            <!--------MENU-->
+            <nav>
+                <a href="../index.html">INICIO</a>
+                <a href="../disfraces.html">DISFRACES</a>
+                <a href="../mascaras.html">MASCARAS</a>
+                <a href="../accesorios.html">ACCESORIOS</a>
+            </nav>
+        </header>
+
+        <!---------PRODUCTO-------->
+        <main calss="producto">
+            <div class="producto-contenido">
+                <div class="producto-imagen">
+                    <img
+                        src="..//imagenes/garras-dragón.jpg"
+                        alt="Moto Dragon"
+                    >
+
+                    <img
+                        src="..//imagenes/garras-dragón.jpg"
+                        alt="Moto Dragon"
+                    >
+
+                    <img
+                        src="..//imagenes/garras-dragón.jpg"
+                        alt="Moto Dragon"
+                    >
+                    
+                </div>
+
+                <div class="producto-info">
+                    <h2>GARRAS DE DRAGON</h2>
+
+                    <P>
+                        Estas garras de dragon son recicladas de un guante comun. Representa a un dragon negro, aunque la idea principal era solo craer garras por el caracter de un gato.
+                    </P>
+
+                    <h3>Materiales</h3>
+                    <ul>
+                        <li>Guante normal negro comun.</li>
+                        <li>goma EVA moldeable</li>
+                        <li>Cilicona coliente.</li>
+                        <li>Acriles negro.</li>
+                        <li>Esmalte de uñas transparente.</li>
+                    </ul>
+
+                    <h3>Caracteristicas</h3>
+
+                    <ul>
+                        <li>Diseño inspirado a lo filosas que son las garras de un gato, pero esta tiene una apriencia de dragon negro.</li>
+                        <li>Estructura elaborada encima de un guante negro comun.</li>
+                        <li>Forrado algunas partes  con la goma EVA moldeable.</li>
+                        <li>Pintada y lubricada con pintura y esmalte para se apariencia convencional.</li>
+                        <li>Proposito de convertirte sinter como se siente tener garras duras y movibles para sentirte peligrosa.</li>
+                    </ul>
+
+                    <a href="../accesorios.html" class="boton-volver">
+                        Volver Accesorios
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <!--PIE DE PAGINA-->
+        <footer>
+
+            <div class="valores">
+
+                <div class="valor">
+                    <h3>CREATIVIDAD</h3>
+                    <P>Diseños originales y unicos.</P>
+                </div>
+
+                <div class="valor">
+                    <h3>RECICLAJE</h3>
+                    <P>Una nueva vida para los materiales.</P>
+                </div>
+
+                <div class="valor">
+                    <h3>ELECTRONICA</h3>
+                    <P>Tecnolgia en nuestros diseños.</P>
+                </div>
+            </div>
+
+            <hr>
+
+            <!--<div class="redes">
+                <h3>SIGUENOS</h3>
+                <a href="https://www:tiktok.com" target="_blank">TikTok</a>
+                <a href="https://www:instagram.com" target="_blank">Instagram</a>
+                <a href="https://www:youtube.com" target="_blank">YouTube</a>
+            </div>-->
+        </footer>
+
+    </body>
+</html>
